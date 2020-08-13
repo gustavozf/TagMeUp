@@ -40,9 +40,9 @@ Images can be tagged by user mouse clicks (default annotation size) or by drag a
 +------------+--------------------------------------------+
 | z          | Delete last tag                            |
 +------------+--------------------------------------------+
-| x          | Reinsert last deleted tag                  |
+| c          | Reinsert last deleted tag                  |
 +------------+--------------------------------------------+
-| c          | Crop images from tags                      |
+| x          | Crop images from tags                      |
 +------------+--------------------------------------------+
 | a          | Get previous image                         |
 +------------+--------------------------------------------+

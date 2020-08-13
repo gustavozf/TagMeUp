@@ -139,7 +139,11 @@ def crop(img, file_name):
     for i, patch in zip(range(len(patches)), patches):
         out_file = "{}crops/{}${}.{}".format(output, file_name, i, output_ext)
         
-        new_img = img[patch['p1'][1]:patch['p2'][1], patch['p1'][0]:patch['p2'][0], :]
+        if len(img.shape) > 2:
+            new_img = img[patch['p1'][1]:patch['p2'][1], patch['p1'][0]:patch['p2'][0], :]
+        else:
+            new_img = img[patch['p1'][1]:patch['p2'][1], patch['p1'][0]:patch['p2'][0]]
+        
         cv2.imwrite(out_file, new_img)
         
 
@@ -257,13 +261,13 @@ while not break_point:
             patches_deleted.append(patches.pop())
             redraw_img(img)
 
-    # press 'x' to reinsert last deleted patch
+    # press 'c' to reinsert last deleted patch
     elif key == ord("c"):
         if patches_deleted:
             patches.append(patches_deleted.pop())
             insert_new_rect(img)
 
-    # press 'c' to crop imgs from tagged patches
+    # press 'x' to crop imgs from tagged patches
     elif key == ord("x"):
         print("Cropping...")
         crop(backup, file_name)
